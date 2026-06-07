@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PublishState {
+  DRAFT
+  PUBLISHED
+  HIDDEN
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Profile {
+  id          String   @id @default(cuid())
+  displayName String
+  role        String
+  headline    String
+  location    String?
+  email       String?
+  phone       String?
+  githubUrl   String?
+  linkedinUrl String?
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+}
+
+model ResumeEntry {
+  id          String   @id @default(cuid())
+  section     String
+  title       String
+  subtitle    String?
+  period      String?
+  description String?
+  sortOrder   Int      @default(0)
+  visible     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id        String       @id @default(cuid())
+  title     String
+  slug      String       @unique
+  sector    String?
+  summary   String
+  problem   String?
+  solution  String?
+  impact    String?
+  stack     String[]
+  imageUrl  String?
+  repoUrl   String?
+  liveUrl   String?
+  state     PublishState @default(DRAFT)
+  featured  Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Achievement {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  category    String?
+  achievedAt  DateTime?
+  state       PublishState @default(DRAFT)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Skill {
+  id        String       @id @default(cuid())
+  name      String
+  category  String
+  level     Int          @default(3)
+  sortOrder Int          @default(0)
+  state     PublishState @default(PUBLISHED)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
