@@ -50,6 +50,7 @@ export default async function Home() {
     ]);
   const publicProjects =
     storedProjects.length > 0 ? storedProjects : featuredProjects;
+  const publicProjectCount = publicProjects.length;
 
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-stone-950">
@@ -62,7 +63,7 @@ export default async function Home() {
             className="text-sm font-semibold uppercase tracking-[0.18em]"
             href="/"
           >
-            Portafolio
+            Jorge Morales
           </Link>
           <div className="flex items-center gap-2">
             <a
@@ -93,7 +94,7 @@ export default async function Home() {
               <span className="pulse-ring rounded-full">
                 <ShieldCheck className="h-4 w-4 text-cyan-700" />
               </span>
-              Casos de estudio anonimizados y enfoque profesional
+              Portafolio profesional con proyectos reales y datos protegidos
             </p>
             <h1 className="text-4xl font-semibold leading-tight text-stone-950 sm:text-6xl lg:text-7xl">
               {publicProfile.name}
@@ -143,11 +144,11 @@ export default async function Home() {
               </div>
               <pre className="overflow-x-auto text-sm leading-7 text-stone-200">
                 <code>{`const portafolio = {
-  publico: ["perfil", "casos", "logros", "contacto"],
-  admin: ["login", "dashboard", "crud"],
-  datos: "PostgreSQL local",
-  admin: "CRUD protegido",
-  deploy: "Vercel cuando este listo"
+  rol: "Ingeniero de sistemas",
+  enfoque: ["software interno", "automatizacion", "datos"],
+  stack: ["Next.js", "Angular", ".NET", "PostgreSQL"],
+  gestion: "contenido editable desde panel admin",
+  produccion: "Vercel + PostgreSQL"
 };`}</code>
               </pre>
             </div>
@@ -201,9 +202,21 @@ export default async function Home() {
 
       <section className="border-y border-stone-200 bg-white px-6 py-14 sm:px-10 lg:px-16">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-3">
-          <Metric icon={BriefcaseBusiness} label="Enfoque" value="Software util" />
-          <Metric icon={Database} label="Datos" value="PostgreSQL + Prisma" />
-          <Metric icon={Rocket} label="Deploy" value="Listo para Vercel" />
+          <Metric
+            icon={BriefcaseBusiness}
+            label="Proyectos publicados"
+            value={`${publicProjectCount}+ casos`}
+          />
+          <Metric
+            icon={Database}
+            label="Datos y backend"
+            value="PostgreSQL, MySQL, SQL Server"
+          />
+          <Metric
+            icon={Rocket}
+            label="Gestion del sitio"
+            value="Panel admin editable"
+          />
         </div>
       </section>
 
@@ -303,11 +316,12 @@ export default async function Home() {
             Casos de estudio
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-stone-950 sm:text-4xl">
-            Muestra impacto sin revelar informacion sensible.
+            Proyectos construidos para resolver procesos reales.
           </h2>
           <p className="mt-4 text-base leading-7 text-stone-700">
-            Cada caso se puede publicar con sector, problema, solucion, stack y
-            resultado. El panel permitira editar esto sin tocar codigo.
+            Aqui presento soluciones web, automatizaciones, sistemas internos y
+            plataformas de monitoreo sin exponer informacion confidencial de las
+            empresas o usuarios involucrados.
           </p>
         </div>
 

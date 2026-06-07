@@ -43,7 +43,7 @@ export function ProjectForm({
           defaultValue={project?.sector}
           label="Sector o alias"
           name="sector"
-          placeholder="Cliente privado, empresa logistica..."
+          placeholder="Operacion interna, telecomunicaciones..."
         />
         <TextField
           defaultValue={project?.imageUrl}

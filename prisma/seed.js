@@ -19,13 +19,13 @@ async function main() {
     update: {},
     create: {
       id: "main-profile",
-      displayName: "Juan Morales",
-      role: "Desarrollador de Software e Ingeniero de Sistemas",
+      displayName: "Jorge Andres Morales De La Ossa",
+      role: "Ingeniero de sistemas y desarrollador de software",
       headline:
-        "Construyo soluciones web mantenibles para automatizar procesos, ordenar informacion y convertir operaciones reales en software util.",
-      location: "Colombia",
-      email: "contacto@tudominio.com",
-      githubUrl: "https://github.com/",
+        "Construyo soluciones web para automatizar procesos, ordenar datos operativos y crear herramientas mantenibles para equipos reales.",
+      location: "Bogota, Colombia",
+      email: "mjorge801@yahoo.com",
+      githubUrl: "https://github.com/ingjorgemorales",
       linkedinUrl: "https://www.linkedin.com/",
     },
   });
@@ -57,7 +57,7 @@ async function main() {
     {
       title: "Modernizacion de flujo administrativo",
       slug: "modernizacion-flujo-administrativo",
-      sector: "Cliente privado",
+      sector: "Operacion administrativa",
       summary:
         "Digitalizacion de formularios, roles y reportes para reemplazar archivos dispersos y controles manuales.",
       impact:

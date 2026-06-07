@@ -1,13 +1,13 @@
 export const profile = {
-  name: "Juan Morales",
-  role: "Desarrollador de Software e Ingeniero de Sistemas",
+  name: "Jorge Andres Morales De La Ossa",
+  role: "Ingeniero de sistemas y desarrollador de software",
   headline:
-    "Construyo soluciones web mantenibles para automatizar procesos, ordenar informacion y convertir operaciones reales en software util.",
-  location: "Colombia",
-  email: "contacto@tudominio.com",
+    "Construyo soluciones web para automatizar procesos, ordenar datos operativos y crear herramientas mantenibles para equipos reales.",
+  location: "Bogota, Colombia",
+  email: "mjorge801@yahoo.com",
   phone: "",
   links: {
-    github: "https://github.com/",
+    github: "https://github.com/ingjorgemorales",
     linkedin: "https://www.linkedin.com/",
   },
 };
@@ -43,7 +43,7 @@ export const featuredProjects = [
   {
     title: "Modernizacion de flujo administrativo",
     slug: "modernizacion-flujo-administrativo",
-    sector: "Cliente privado",
+    sector: "Operacion administrativa",
     summary:
       "Digitalizacion de formularios, roles y reportes para reemplazar archivos dispersos y controles manuales.",
     impact: "Informacion mas confiable y una operacion menos dependiente de hojas sueltas.",
@@ -88,7 +88,7 @@ export const adminModules = [
   {
     title: "Perfil publico",
     description: "Nombre visible, titular, resumen, enlaces y datos de contacto.",
-    status: "Listo para conectar",
+    status: "Editable",
   },
   {
     title: "Casos de estudio",

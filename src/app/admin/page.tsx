@@ -61,10 +61,11 @@ export default async function AdminDashboard() {
     <AdminShell active="/admin" title="Resumen" userEmail={admin.email}>
       <div className="space-y-6">
         <section className="scan-panel rounded-lg border border-stone-200 bg-stone-950 p-6 text-white shadow-xl">
-          <h2 className="text-lg font-semibold">Portafolio local conectado</h2>
+          <h2 className="text-lg font-semibold">Portafolio conectado</h2>
           <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-300">
-            El panel ya administra informacion desde PostgreSQL local. Los
-            cambios publicados se reflejan en la pagina principal.
+            El panel administra proyectos, logros, tecnologias y perfil desde
+            la base de datos. Los cambios publicados se reflejan en la pagina
+            principal.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-5">
             <Metric label="Proyectos" value={projectCount} />

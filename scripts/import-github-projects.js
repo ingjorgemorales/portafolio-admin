@@ -226,21 +226,22 @@ async function main() {
   await prisma.profile.upsert({
     where: { id: "main-profile" },
     update: {
-      displayName: "Jorge Andres Morales",
-      role: "Desarrollador de Software e Ingeniero de Sistemas",
+      displayName: "Jorge Andres Morales De La Ossa",
+      role: "Ingeniero de sistemas y desarrollador de software",
       headline:
         "Desarrollador de software enfocado en sistemas web, automatizacion de procesos, plataformas operativas y soluciones con enfoque practico.",
-      location: "Monteria, Colombia",
+      location: "Bogota, Colombia",
+      email: "mjorge801@yahoo.com",
       githubUrl,
     },
     create: {
       id: "main-profile",
-      displayName: "Jorge Andres Morales",
-      role: "Desarrollador de Software e Ingeniero de Sistemas",
+      displayName: "Jorge Andres Morales De La Ossa",
+      role: "Ingeniero de sistemas y desarrollador de software",
       headline:
         "Desarrollador de software enfocado en sistemas web, automatizacion de procesos, plataformas operativas y soluciones con enfoque practico.",
-      location: "Monteria, Colombia",
-      email: "contacto@tudominio.com",
+      location: "Bogota, Colombia",
+      email: "mjorge801@yahoo.com",
       githubUrl,
       linkedinUrl: "https://www.linkedin.com/",
     },
