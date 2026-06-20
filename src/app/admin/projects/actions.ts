@@ -19,7 +19,13 @@ export async function createProjectAction(formData: FormData) {
 
   const title = requiredText(formData, "title");
   const slug = await getUniqueSlug(requiredText(formData, "slug") || title);
-  const imageUrl = await saveProjectImage(formData);
+  let imageUrl: string | null;
+
+  try {
+    imageUrl = await saveProjectImage(formData);
+  } catch {
+    redirect("/admin/projects/new?status=upload-error");
+  }
 
   await prisma.project.create({
     data: {
@@ -48,7 +54,13 @@ export async function updateProjectAction(id: string, formData: FormData) {
 
   const title = requiredText(formData, "title");
   const slug = await getUniqueSlug(requiredText(formData, "slug") || title, id);
-  const imageUrl = await saveProjectImage(formData);
+  let imageUrl: string | null;
+
+  try {
+    imageUrl = await saveProjectImage(formData);
+  } catch {
+    redirect(`/admin/projects/${id}/edit?status=upload-error`);
+  }
 
   await prisma.project.update({
     where: { id },
