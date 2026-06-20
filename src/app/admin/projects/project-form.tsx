@@ -86,7 +86,7 @@ export function ProjectForm({
 
       <label className="block rounded-lg border border-dashed border-stone-300 bg-stone-50 p-4">
         <span className="text-sm font-medium text-stone-700">
-          Subir imagen local
+          Subir imagen del proyecto
         </span>
         <input
           accept="image/jpeg,image/png,image/webp"
@@ -95,7 +95,8 @@ export function ProjectForm({
           type="file"
         />
         <span className="mt-2 block text-xs text-stone-500">
-          Formatos: JPG, PNG o WEBP. Maximo 5 MB.
+          Formatos: JPG, PNG o WEBP. Maximo 5 MB. En produccion se guarda en
+          Supabase Storage.
         </span>
       </label>
 
