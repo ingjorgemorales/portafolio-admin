@@ -61,8 +61,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   ];
 
   return (
-    <main className="min-h-screen bg-white text-blue-950">
-      <section         className="relative isolate overflow-x-clip px-6 py-8 sm:px-10 lg:px-16">
+    <main className="min-h-screen overflow-x-hidden bg-white text-blue-950">
+      <section className="relative isolate overflow-x-clip px-4 py-8 sm:px-10 lg:px-16">
         <div className="animated-grid absolute inset-0 -z-20" />
         <div className="absolute inset-x-0 top-0 -z-10 h-44 bg-gradient-to-b from-white/75 to-transparent" />
 
@@ -82,18 +82,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </Link>
         </nav>
 
-        <div className="mx-auto grid max-w-7xl gap-8 py-16 lg:grid-cols-[1fr_390px] lg:items-start">
-          <div>
-            <p className="inline-flex items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm backdrop-blur">
-              <span className="pulse-ring rounded-full">
+        <div className="mx-auto grid min-w-0 max-w-7xl gap-8 py-16 lg:grid-cols-[1fr_390px] lg:items-start">
+          <div className="min-w-0">
+            <p className="flex w-fit max-w-full items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm backdrop-blur">
+              <span className="pulse-ring shrink-0 rounded-full">
                 <CheckCircle2 className="h-4 w-4 text-blue-600" />
               </span>
-              Caso de estudio anonimizado
+              <span className="min-w-0 break-words">
+                Caso de estudio anonimizado
+              </span>
             </p>
-            <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-tight sm:text-6xl">
+            <h1 className="mt-6 max-w-4xl break-words text-3xl font-semibold leading-tight sm:text-6xl">
               {project.title}
             </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-blue-800">
+            <p className="mt-5 max-w-3xl break-words text-base leading-7 text-blue-800 sm:text-lg sm:leading-8">
               {project.summary}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -122,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
 
-          <aside className="scan-panel floating-panel rounded-lg border border-blue-100 bg-white/85 p-5 shadow-xl backdrop-blur">
+          <aside className="scan-panel floating-panel min-w-0 rounded-lg border border-blue-100 bg-white/85 p-5 shadow-xl backdrop-blur">
             {project.imageUrl ? (
               <div
                 className="mb-5 h-48 rounded-md border border-blue-100 bg-cover bg-center"

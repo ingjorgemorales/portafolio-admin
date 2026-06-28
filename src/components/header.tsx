@@ -53,13 +53,13 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-blue-100 transition-colors ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-blue-100 transition-colors ${
         open ? "bg-white" : "bg-white/80 backdrop-blur-md"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
-          className="flex shrink-0 items-center gap-3"
+          className="flex min-w-0 shrink items-center gap-3"
           href="/"
         >
           <Image
@@ -70,7 +70,7 @@ export function Header() {
             src="/logo.png"
             width={1536}
           />
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-blue-900">
+          <span className="truncate text-xs font-bold uppercase tracking-[0.12em] text-blue-900 sm:text-sm sm:tracking-[0.18em]">
             Jorge Morales
           </span>
         </Link>

@@ -31,7 +31,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <Header />
-        {children}
+        <div className="pt-[73px]">{children}</div>
       </body>
     </html>
   );

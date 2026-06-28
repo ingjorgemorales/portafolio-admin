@@ -52,29 +52,31 @@ export default async function Home() {
   const publicProjectCount = publicProjects.length;
 
   return (
-    <main className="min-h-screen bg-white text-blue-950">
+    <main className="min-h-screen overflow-x-hidden bg-white text-blue-950">
       <section
-        className="relative isolate overflow-x-clip px-6 py-3 sm:py-8 sm:px-10 lg:px-16 lg:min-h-dvh"
+        className="relative isolate overflow-x-clip px-4 py-3 sm:px-10 sm:py-8 lg:min-h-dvh lg:px-16"
         id="hero"
       >
         <div className="animated-grid absolute inset-0 -z-20" />
         <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white/70 to-transparent" />
 
-        <div className="mx-auto grid max-w-7xl gap-4 py-6 sm:gap-10 sm:py-14 lg:min-h-[74vh] lg:content-center lg:grid-cols-[1fr_0.82fr] lg:items-center">
-          <div className="max-w-4xl">
-            <p className="mb-2 inline-flex items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm backdrop-blur sm:mb-5">
-              <span className="pulse-ring rounded-full">
+        <div className="mx-auto grid min-w-0 max-w-7xl gap-4 py-6 sm:gap-10 sm:py-14 lg:min-h-[74vh] lg:content-center lg:grid-cols-[1fr_0.82fr] lg:items-center">
+          <div className="min-w-0 max-w-4xl">
+            <p className="mb-2 flex w-fit max-w-full items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 text-sm font-medium text-blue-800 shadow-sm backdrop-blur sm:mb-5">
+              <span className="pulse-ring shrink-0 rounded-full">
                 <ShieldCheck className="h-4 w-4 text-blue-600" />
               </span>
-              Portafolio profesional con proyectos reales y datos protegidos
+              <span className="min-w-0 break-words">
+                Portafolio profesional con proyectos reales y datos protegidos
+              </span>
             </p>
-            <h1 className="text-4xl font-semibold leading-tight text-blue-950 sm:text-6xl lg:text-7xl">
+            <h1 className="break-words text-3xl font-semibold leading-tight text-blue-950 sm:text-6xl lg:text-7xl">
               {publicProfile.name}
             </h1>
-            <h2 className="mt-2 max-w-3xl text-2xl font-semibold leading-tight text-blue-700 sm:mt-4 sm:text-4xl">
+            <h2 className="mt-2 max-w-3xl break-words text-xl font-semibold leading-tight text-blue-700 sm:mt-4 sm:text-4xl">
               {publicProfile.role}
             </h2>
-            <p className="mt-2 max-w-2xl text-lg leading-8 text-blue-800 sm:mt-6 sm:text-xl">
+            <p className="mt-2 max-w-2xl break-words text-base leading-7 text-blue-800 sm:mt-6 sm:text-xl sm:leading-8">
               {publicProfile.headline}
             </p>
             <div className="mt-2 flex flex-wrap gap-2 text-sm font-medium text-blue-800 sm:mt-6">
@@ -102,8 +104,8 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[180px] sm:min-h-[320px] md:min-h-[520px]">
-            <div className="scan-panel floating-panel rounded-lg border border-blue-200 bg-blue-950 p-5 text-white shadow-2xl">
+          <div className="relative min-w-0 sm:min-h-[320px] md:min-h-[520px]">
+            <div className="scan-panel floating-panel rounded-lg border border-blue-200 bg-blue-950 p-4 text-white shadow-2xl sm:p-5">
               <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-blue-200">
                   arquitectura-portafolio.ts
@@ -114,7 +116,7 @@ export default async function Home() {
                   <span className="h-3 w-3 rounded-full bg-emerald-400" />
                 </div>
               </div>
-              <pre className="overflow-x-auto text-sm leading-7 text-blue-100">
+              <pre className="overflow-x-auto whitespace-pre-wrap break-words text-xs leading-6 text-blue-100 sm:whitespace-pre sm:text-sm sm:leading-7">
                 <code>{`const portafolio = {
   rol: "Ingeniero de sistemas",
   enfoque: ["software interno", "automatizacion", "datos"],
@@ -125,7 +127,7 @@ export default async function Home() {
               </pre>
             </div>
 
-            <div className="floating-panel-delay absolute -bottom-2 left-4 right-8 rounded-lg border border-blue-100 bg-white/90 p-4 shadow-xl backdrop-blur md:left-10">
+            <div className="floating-panel-delay mt-4 rounded-lg border border-blue-100 bg-white/90 p-4 shadow-xl backdrop-blur sm:absolute sm:-bottom-2 sm:left-4 sm:right-8 sm:mt-0 md:left-10">
               <div className="mb-4 flex items-center justify-between">
                 <p className="text-sm font-semibold text-blue-900">
                   Flujo de trabajo
@@ -469,9 +471,9 @@ function ContactChip({
   value: string;
 }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 shadow-sm backdrop-blur">
-      <Icon className="h-4 w-4 text-blue-700" />
-      {value}
+    <span className="inline-flex max-w-full min-w-0 items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 shadow-sm backdrop-blur">
+      <Icon className="h-4 w-4 shrink-0 text-blue-700" />
+      <span className="min-w-0 break-words">{value}</span>
     </span>
   );
 }
