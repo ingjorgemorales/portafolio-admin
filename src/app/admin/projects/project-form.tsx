@@ -19,7 +19,7 @@ export function ProjectForm({
   return (
     <form
       action={action}
-      className="space-y-5 rounded-lg border border-stone-200 bg-white/90 p-6 shadow-sm backdrop-blur"
+      className="space-y-5 rounded-lg border border-blue-100 bg-white/90 p-6 shadow-sm backdrop-blur"
       encType="multipart/form-data"
     >
       <div className="grid gap-4 md:grid-cols-2">
@@ -73,28 +73,28 @@ export function ProjectForm({
       <input name="currentImageUrl" type="hidden" value={project?.imageUrl ?? ""} />
 
       {project?.imageUrl ? (
-        <div className="rounded-lg border border-stone-200 bg-stone-50 p-3">
-          <p className="mb-3 text-sm font-medium text-stone-700">
+        <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
+          <p className="mb-3 text-sm font-medium text-blue-800">
             Imagen actual
           </p>
           <div
-            className="h-44 rounded-md border border-stone-200 bg-cover bg-center"
+            className="h-44 rounded-md border border-blue-100 bg-cover bg-center"
             style={{ backgroundImage: `url(${project.imageUrl})` }}
           />
         </div>
       ) : null}
 
-      <label className="block rounded-lg border border-dashed border-stone-300 bg-stone-50 p-4">
-        <span className="text-sm font-medium text-stone-700">
+      <label className="block rounded-lg border border-dashed border-blue-200 bg-blue-50 p-4">
+        <span className="text-sm font-medium text-blue-800">
           Subir imagen del proyecto
         </span>
         <input
           accept="image/jpeg,image/png,image/webp"
-          className="mt-3 block w-full text-sm text-stone-700 file:mr-4 file:rounded-md file:border-0 file:bg-stone-950 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-stone-800"
+          className="mt-3 block w-full text-sm text-blue-800 file:mr-4 file:rounded-md file:border-0 file:bg-blue-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-blue-600"
           name="imageFile"
           type="file"
         />
-        <span className="mt-2 block text-xs text-stone-500">
+        <span className="mt-2 block text-xs text-blue-500">
           Formatos: JPG, PNG o WEBP. Maximo 5 MB. En produccion se guarda en
           Supabase Storage.
         </span>
@@ -139,9 +139,9 @@ export function ProjectForm({
 
       <div className="grid gap-4 md:grid-cols-2">
         <StateField defaultValue={project?.state} />
-        <label className="flex items-center gap-3 rounded-md border border-stone-200 px-3 py-2 text-sm font-medium text-stone-700">
+        <label className="flex items-center gap-3 rounded-md border border-blue-100 px-3 py-2 text-sm font-medium text-blue-800">
           <input
-            className="h-4 w-4 rounded border-stone-300"
+            className="h-4 w-4 rounded border-blue-200"
             defaultChecked={project?.featured ?? true}
             name="featured"
             type="checkbox"
@@ -153,7 +153,7 @@ export function ProjectForm({
       <div className="flex flex-wrap gap-2">
         <SubmitButton label={submitLabel} />
         <Link
-          className="rounded-md border border-stone-300 px-4 py-2.5 text-sm font-semibold transition hover:bg-stone-50"
+          className="rounded-md border border-blue-200 px-4 py-2.5 text-sm font-semibold transition hover:bg-blue-50"
           href="/admin/projects"
         >
           Cancelar

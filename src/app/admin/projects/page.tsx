@@ -30,12 +30,12 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-xl font-semibold">Casos de estudio</h2>
-            <p className="mt-1 text-sm text-stone-600">
+            <p className="mt-1 text-sm text-blue-600">
               Administra proyectos anonimizados para mostrar tu experiencia.
             </p>
           </div>
           <Link
-            className="inline-flex items-center gap-2 rounded-md bg-stone-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-800"
+            className="inline-flex items-center gap-2 rounded-md bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600"
             href="/admin/projects/new"
           >
             <Plus className="h-4 w-4" />
@@ -45,9 +45,9 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
 
         <AdminNotice status={params.status} />
 
-        <div className="overflow-hidden rounded-lg border border-stone-200 bg-white/90 shadow-sm backdrop-blur">
+        <div className="overflow-hidden rounded-lg border border-blue-100 bg-white/90 shadow-sm backdrop-blur">
           <table className="w-full text-left text-sm">
-            <thead className="bg-stone-50 text-stone-600">
+            <thead className="bg-blue-50 text-blue-600">
               <tr>
                 <th className="px-4 py-3 font-medium">Titulo</th>
                 <th className="px-4 py-3 font-medium">Estado</th>
@@ -55,17 +55,17 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
                 <th className="px-4 py-3 font-medium">Acciones</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-stone-200">
+            <tbody className="divide-y divide-blue-100">
               {projects.map((project) => (
-                <tr className="transition hover:bg-cyan-50/50" key={project.id}>
+                <tr className="transition hover:bg-blue-50/50" key={project.id}>
                   <td className="px-4 py-3">
                     <p className="font-medium">{project.title}</p>
-                    <p className="mt-1 text-xs text-stone-500">
+                    <p className="mt-1 text-xs text-blue-500">
                       {project.sector ?? "Sin sector"} - /{project.slug}
                     </p>
                     {project.repoUrl ? (
                       <a
-                        className="mt-1 inline-flex text-xs font-medium text-cyan-800 hover:underline"
+                        className="mt-1 inline-flex text-xs font-medium text-blue-700 hover:underline"
                         href={project.repoUrl}
                         rel="noreferrer"
                         target="_blank"
@@ -81,7 +81,7 @@ export default async function ProjectsPage({ searchParams }: ProjectsPageProps) 
                   <td className="px-4 py-3">
                     <div className="flex gap-2">
                       <Link
-                        className="rounded-md border border-stone-300 p-2 transition hover:bg-stone-50"
+                        className="rounded-md border border-blue-200 p-2 transition hover:bg-blue-50"
                         href={`/admin/projects/${project.id}/edit`}
                         title="Editar"
                       >

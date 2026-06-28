@@ -17,9 +17,9 @@ export function TextField({
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-stone-700">{label}</span>
+      <span className="text-sm font-medium text-blue-800">{label}</span>
       <input
-        className="mt-2 w-full rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+        className="mt-2 w-full rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
         defaultValue={defaultValue ?? ""}
         name={name}
         placeholder={placeholder}
@@ -47,9 +47,9 @@ export function TextAreaField({
 }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-stone-700">{label}</span>
+      <span className="text-sm font-medium text-blue-800">{label}</span>
       <textarea
-        className="mt-2 w-full resize-y rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+        className="mt-2 w-full resize-y rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
         defaultValue={defaultValue ?? ""}
         name={name}
         placeholder={placeholder}
@@ -63,9 +63,9 @@ export function TextAreaField({
 export function StateField({ defaultValue }: { defaultValue?: PublishState }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-stone-700">Estado</span>
+      <span className="text-sm font-medium text-blue-800">Estado</span>
       <select
-        className="mt-2 w-full rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+        className="mt-2 w-full rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
         defaultValue={defaultValue ?? "DRAFT"}
         name="state"
       >
@@ -80,7 +80,7 @@ export function StateField({ defaultValue }: { defaultValue?: PublishState }) {
 export function SubmitButton({ label }: { label: string }) {
   return (
     <button
-      className="rounded-md bg-stone-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-800"
+      className="rounded-md bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600"
       type="submit"
     >
       {label}

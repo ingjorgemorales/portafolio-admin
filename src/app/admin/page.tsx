@@ -60,9 +60,9 @@ export default async function AdminDashboard() {
   return (
     <AdminShell active="/admin" title="Resumen" userEmail={admin.email}>
       <div className="space-y-6">
-        <section className="scan-panel rounded-lg border border-stone-200 bg-stone-950 p-6 text-white shadow-xl">
+        <section className="scan-panel rounded-lg border border-blue-200 bg-blue-950 p-6 text-white shadow-xl">
           <h2 className="text-lg font-semibold">Portafolio conectado</h2>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-300">
+          <p className="mt-2 max-w-2xl text-sm leading-6 text-blue-200">
             El panel administra proyectos, logros, tecnologias y perfil desde
             la base de datos. Los cambios publicados se reflejan en la pagina
             principal.
@@ -82,18 +82,18 @@ export default async function AdminDashboard() {
 
             return (
               <Link
-                className="group rounded-lg border border-stone-200 bg-white/90 p-5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-cyan-700 hover:shadow-xl"
+                className="group rounded-lg border border-blue-100 bg-white/90 p-5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-blue-600 hover:shadow-xl"
                 href={module.href}
                 key={module.href}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="rounded-lg bg-cyan-50 p-3 text-cyan-800">
+                  <span className="rounded-lg bg-blue-50 p-3 text-blue-700">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <ArrowRight className="h-5 w-5 text-stone-400 transition group-hover:translate-x-1 group-hover:text-cyan-800" />
+                  <ArrowRight className="h-5 w-5 text-blue-400 transition group-hover:translate-x-1 group-hover:text-blue-700" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">{module.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-stone-600">
+                <p className="mt-2 text-sm leading-6 text-blue-600">
                   {module.description}
                 </p>
               </Link>
@@ -108,7 +108,7 @@ export default async function AdminDashboard() {
 function Metric({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
-      <p className="text-sm text-stone-300">{label}</p>
+      <p className="text-sm text-blue-200">{label}</p>
       <p className="mt-2 text-2xl font-semibold">{value}</p>
     </div>
   );

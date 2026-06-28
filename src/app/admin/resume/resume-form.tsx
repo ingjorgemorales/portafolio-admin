@@ -27,13 +27,13 @@ export function ResumeForm({
   return (
     <form
       action={action}
-      className="space-y-5 rounded-lg border border-stone-200 bg-white/90 p-6 shadow-sm backdrop-blur"
+      className="space-y-5 rounded-lg border border-blue-100 bg-white/90 p-6 shadow-sm backdrop-blur"
     >
       <div className="grid gap-4 md:grid-cols-2">
         <label className="block">
-          <span className="text-sm font-medium text-stone-700">Seccion</span>
+          <span className="text-sm font-medium text-blue-800">Seccion</span>
           <select
-            className="mt-2 w-full rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+            className="mt-2 w-full rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
             defaultValue={entry?.section ?? "education"}
             name="section"
             required
@@ -81,9 +81,9 @@ export function ResumeForm({
         rows={5}
       />
 
-      <label className="flex items-center gap-3 rounded-md border border-stone-200 px-3 py-2 text-sm font-medium text-stone-700">
+      <label className="flex items-center gap-3 rounded-md border border-blue-100 px-3 py-2 text-sm font-medium text-blue-800">
         <input
-          className="h-4 w-4 rounded border-stone-300"
+          className="h-4 w-4 rounded border-blue-200"
           defaultChecked={entry?.visible ?? true}
           name="visible"
           type="checkbox"
@@ -94,7 +94,7 @@ export function ResumeForm({
       <div className="flex flex-wrap gap-2">
         <SubmitButton label={submitLabel} />
         <Link
-          className="rounded-md border border-stone-300 px-4 py-2.5 text-sm font-semibold transition hover:bg-stone-50"
+          className="rounded-md border border-blue-200 px-4 py-2.5 text-sm font-semibold transition hover:bg-blue-50"
           href="/admin/resume"
         >
           Cancelar

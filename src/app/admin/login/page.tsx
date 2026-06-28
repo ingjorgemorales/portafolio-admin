@@ -22,23 +22,23 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const message = getMessage(params);
 
   return (
-    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-stone-100 px-6 py-10 text-stone-950">
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-white px-6 py-10 text-blue-950">
       <div className="animated-grid absolute inset-0 -z-20 opacity-70" />
       <div className="absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-white/80 to-transparent" />
-      <section className="floating-panel w-full max-w-md rounded-lg border border-stone-200 bg-white/85 p-6 shadow-2xl backdrop-blur">
+      <section className="floating-panel w-full max-w-md rounded-lg border border-blue-100 bg-white/90 p-6 shadow-2xl backdrop-blur">
         <Link
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-stone-600 transition hover:text-stone-950"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-blue-600 transition hover:text-blue-950"
           href="/"
         >
           <ArrowLeft className="h-4 w-4" />
           Volver al sitio
         </Link>
         <div className="mb-8">
-          <span className="mb-4 inline-flex rounded-lg bg-cyan-50 p-3 text-cyan-800">
+          <span className="mb-4 inline-flex rounded-lg bg-blue-50 p-3 text-blue-700">
             <LockKeyhole className="pulse-ring h-5 w-5 rounded-full" />
           </span>
           <h1 className="text-2xl font-semibold">Entrar al panel</h1>
-          <p className="mt-2 text-sm leading-6 text-stone-600">
+          <p className="mt-2 text-sm leading-6 text-blue-600">
             Usa tu usuario administrador para gestionar el contenido del
             portafolio.
           </p>
@@ -58,9 +58,9 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
         <form action={loginAction} className="space-y-4">
           <label className="block">
-            <span className="text-sm font-medium text-stone-700">Correo</span>
+            <span className="text-sm font-medium text-blue-800">Correo</span>
             <input
-              className="mt-2 w-full rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+              className="mt-2 w-full rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
               defaultValue="admin@local.dev"
               name="email"
               placeholder="admin@local.dev"
@@ -69,11 +69,11 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             />
           </label>
           <label className="block">
-            <span className="text-sm font-medium text-stone-700">
+            <span className="text-sm font-medium text-blue-800">
               Contrasena
             </span>
             <input
-              className="mt-2 w-full rounded-md border border-stone-300 px-3 py-2 text-sm outline-none transition focus:border-cyan-700 focus:ring-2 focus:ring-cyan-700/20"
+              className="mt-2 w-full rounded-md border border-blue-200 px-3 py-2 text-sm outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20"
               name="password"
               placeholder="********"
               required
@@ -81,7 +81,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             />
           </label>
           <button
-            className="w-full rounded-md bg-stone-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-stone-800 hover:shadow-lg"
+            className="w-full rounded-md bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-lg"
             type="submit"
           >
             Entrar

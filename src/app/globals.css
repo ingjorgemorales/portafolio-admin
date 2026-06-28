@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f4ee;
-  --foreground: #1c1917;
+  --background: #ffffff;
+  --foreground: #172554;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @theme inline {
@@ -19,7 +23,7 @@ body {
 }
 
 ::selection {
-  background: #0e7490;
+  background: #2563eb;
   color: #ffffff;
 }
 
@@ -69,18 +73,18 @@ body {
 @keyframes pulse-ring {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(14, 116, 144, 0.35);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(14, 116, 144, 0);
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
   }
 }
 
 .animated-grid {
   background-image:
-    linear-gradient(rgba(41, 37, 36, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(41, 37, 36, 0.08) 1px, transparent 1px),
-    linear-gradient(110deg, #f7f4ee 0%, #eef7f1 42%, #f4f0e6 100%);
+    linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+    linear-gradient(110deg, #ffffff 0%, #eff6ff 42%, #f8fafc 100%);
   background-size:
     42px 42px,
     42px 42px,
@@ -106,7 +110,7 @@ body {
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(34, 211, 238, 0.18),
+    rgba(37, 99, 235, 0.15),
     transparent
   );
   content: "";
@@ -125,6 +129,28 @@ body {
 
 .pulse-ring {
   animation: pulse-ring 2.4s ease-in-out infinite;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

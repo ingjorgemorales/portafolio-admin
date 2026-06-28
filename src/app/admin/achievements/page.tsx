@@ -32,12 +32,12 @@ export default async function AchievementsPage({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-xl font-semibold">Logros profesionales</h2>
-            <p className="mt-1 text-sm text-stone-600">
+            <p className="mt-1 text-sm text-blue-600">
               Registra hitos, resultados, certificaciones o aprendizajes.
             </p>
           </div>
           <Link
-            className="inline-flex items-center gap-2 rounded-md bg-stone-950 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-800"
+            className="inline-flex items-center gap-2 rounded-md bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-600"
             href="/admin/achievements/new"
           >
             <Plus className="h-4 w-4" />
@@ -50,25 +50,25 @@ export default async function AchievementsPage({
         <div className="grid gap-4">
           {achievements.map((achievement) => (
             <article
-              className="rounded-lg border border-stone-200 bg-white/90 p-5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-cyan-700 hover:shadow-lg"
+              className="rounded-lg border border-blue-100 bg-white/90 p-5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-blue-600 hover:shadow-lg"
               key={achievement.id}
             >
               <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-cyan-800">
+                  <p className="text-xs font-medium uppercase tracking-[0.14em] text-blue-700">
                     {achievement.category ?? "General"} -{" "}
                     {stateLabel(achievement.state)}
                   </p>
                   <h3 className="mt-2 text-lg font-semibold">
                     {achievement.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-stone-600">
+                  <p className="mt-2 text-sm leading-6 text-blue-600">
                     {achievement.description}
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <Link
-                    className="rounded-md border border-stone-300 p-2 transition hover:bg-stone-50"
+                    className="rounded-md border border-blue-200 p-2 transition hover:bg-blue-50"
                     href={`/admin/achievements/${achievement.id}/edit`}
                     title="Editar"
                   >

@@ -29,7 +29,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
       <div className="space-y-5">
         <div>
           <h2 className="text-xl font-semibold">Informacion principal</h2>
-          <p className="mt-1 text-sm text-stone-600">
+          <p className="mt-1 text-sm text-blue-600">
             Esto alimenta la portada y los enlaces principales del portafolio.
           </p>
         </div>
@@ -38,7 +38,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
 
         <form
           action={updateProfileAction}
-          className="space-y-5 rounded-lg border border-stone-200 bg-white/90 p-6 shadow-sm backdrop-blur"
+          className="space-y-5 rounded-lg border border-blue-100 bg-white/90 p-6 shadow-sm backdrop-blur"
         >
           <input name="id" type="hidden" value={profile?.id ?? "main-profile"} />
 

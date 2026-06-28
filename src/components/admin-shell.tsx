@@ -35,23 +35,23 @@ export function AdminShell({
   userEmail: string;
 }) {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-stone-100 text-stone-950">
-      <div className="animated-grid absolute inset-0 -z-20 opacity-45" />
+    <main className="relative min-h-screen overflow-hidden bg-white text-blue-950">
+      <div className="animated-grid absolute inset-0 -z-20 opacity-30" />
       <div className="absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-white via-white/80 to-transparent" />
-      <header className="border-b border-stone-200 bg-white/80 px-6 py-4 shadow-sm backdrop-blur">
+      <header className="border-b border-blue-100 bg-white/80 px-6 py-4 shadow-sm backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm font-medium text-cyan-800">
+            <p className="text-sm font-medium text-blue-700">
               Panel administrativo
             </p>
             <h1 className="text-2xl font-semibold">{title}</h1>
-            <p className="mt-1 text-sm text-stone-500">
+            <p className="mt-1 text-sm text-blue-500">
               {subtitle ?? `Sesion activa: ${userEmail}`}
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
             <Link
-              className="inline-flex items-center gap-2 rounded-md border border-stone-300 px-3 py-2 text-sm font-semibold transition hover:bg-stone-50"
+              className="inline-flex items-center gap-2 rounded-md border border-blue-100 px-3 py-2 text-sm font-semibold transition hover:bg-blue-50"
               href="/"
             >
               Ver sitio
@@ -59,7 +59,7 @@ export function AdminShell({
             </Link>
             <form action={logoutAction}>
               <button
-                className="inline-flex items-center gap-2 rounded-md bg-stone-950 px-3 py-2 text-sm font-semibold text-white transition hover:bg-stone-800"
+                className="inline-flex items-center gap-2 rounded-md bg-blue-700 px-3 py-2 text-sm font-semibold text-white transition hover:bg-blue-600"
                 type="submit"
               >
                 <LogOut className="h-4 w-4" />
@@ -71,7 +71,7 @@ export function AdminShell({
       </header>
 
       <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-[240px_1fr]">
-        <aside className="h-fit rounded-lg border border-stone-200 bg-white/85 p-2 shadow-sm backdrop-blur">
+        <aside className="h-fit rounded-lg border border-blue-100 bg-white/90 p-2 shadow-sm backdrop-blur">
           <nav className="grid gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -81,8 +81,8 @@ export function AdminShell({
                 <Link
                   className={`inline-flex items-center gap-3 rounded-md px-3 py-2 text-sm font-semibold transition ${
                     isActive
-                      ? "bg-stone-950 text-white shadow-sm"
-                      : "text-stone-700 hover:translate-x-1 hover:bg-stone-100"
+                      ? "bg-blue-700 text-white shadow-sm"
+                      : "text-blue-800 hover:translate-x-1 hover:bg-blue-50"
                   }`}
                   href={item.href}
                   key={item.href}
