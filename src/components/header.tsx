@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LockKeyhole, Menu, X } from "lucide-react";
@@ -19,26 +20,25 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      const activePoint = window.scrollY + window.innerHeight * 0.3;
+      let current = "hero";
 
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (!el) continue;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (activePoint >= top) {
+          current = id;
+        }
+      }
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        { rootMargin: "-45% 0px -55% 0px" },
-      );
+      setActiveSection(current);
+    };
 
-      observer.observe(el);
-      observers.push(observer);
-    }
-
-    return () => observers.forEach((o) => o.disconnect());
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const linkClass = (href: string) => {
@@ -59,10 +59,20 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
-          className="text-sm font-bold uppercase tracking-[0.18em] text-blue-900"
+          className="flex shrink-0 items-center gap-3"
           href="/"
         >
-          Jorge Morales
+          <Image
+            alt="Logo"
+            className="h-12 w-auto"
+            height={1024}
+            priority
+            src="/logo.png"
+            width={1536}
+          />
+          <span className="text-sm font-bold uppercase tracking-[0.18em] text-blue-900">
+            Jorge Morales
+          </span>
         </Link>
 
         {/* Desktop nav */}
