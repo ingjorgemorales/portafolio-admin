@@ -72,7 +72,7 @@ export default async function Home() {
               {publicProfile.name}
             </h1>
             <h2 className="mt-2 max-w-3xl text-2xl font-semibold leading-tight text-blue-700 sm:mt-4 sm:text-4xl">
-              Ingeniero de sistemas y desarrollador de software
+              {publicProfile.role}
             </h2>
             <p className="mt-2 max-w-2xl text-lg leading-8 text-blue-800 sm:mt-6 sm:text-xl">
               {publicProfile.headline}
