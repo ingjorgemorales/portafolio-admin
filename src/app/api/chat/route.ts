@@ -136,6 +136,37 @@ function hasAny(text: string, keywords: string[]): boolean {
   return keywords.some((keyword) => text.includes(keyword));
 }
 
+function asksAboutProfile(text: string): boolean {
+  return hasAny(text, [
+    "perfil",
+    "quien es jorge",
+    "sobre jorge",
+    "presentacion",
+    "presentate",
+    "resumen",
+    "bio",
+  ]);
+}
+
+function asksAboutStack(text: string): boolean {
+  return hasAny(text, [
+    "tecnologia",
+    "tecnologias",
+    "stack",
+    "herramienta",
+    "herramientas",
+    "lenguaje",
+    "lenguajes",
+    "framework",
+    "frameworks",
+    "base de datos",
+    "bases de datos",
+    "usas",
+    "manejas",
+    "sabes",
+  ]);
+}
+
 function getIntent(question: string): Intent | null {
   const q = normalizeText(question);
   const wordCount = q.split(/\s+/).filter(Boolean).length;
@@ -166,24 +197,7 @@ function getIntent(question: string): Intent | null {
     return "contacto";
   }
 
-  if (
-    hasAny(q, [
-      "tecnologia",
-      "tecnologias",
-      "stack",
-      "herramienta",
-      "herramientas",
-      "lenguaje",
-      "lenguajes",
-      "framework",
-      "frameworks",
-      "base de datos",
-      "bases de datos",
-      "usas",
-      "manejas",
-      "sabes",
-    ])
-  ) {
+  if (asksAboutStack(q)) {
     return "stack";
   }
 
@@ -215,17 +229,7 @@ function getIntent(question: string): Intent | null {
     return "proyectos";
   }
 
-  if (
-    hasAny(q, [
-      "perfil",
-      "quien es jorge",
-      "sobre jorge",
-      "presentacion",
-      "presentate",
-      "resumen",
-      "bio",
-    ])
-  ) {
+  if (asksAboutProfile(q)) {
     return "perfil";
   }
 
@@ -257,7 +261,63 @@ function joinContents(chunks: KnowledgeChunk[]): string {
   return chunks.map((chunk) => chunk.content).join(" ");
 }
 
+function answerProfileAndStack(chunks: KnowledgeChunk[]) {
+  const presentation = findChunk(chunks, "Presentacion personal");
+  const stackSummary = summarizeStack(chunks);
+  const profileText = presentation?.content;
+
+  if (profileText && stackSummary) {
+    return `${profileText} En tecnologias maneja principalmente ${stackSummary}.`;
+  }
+
+  return profileText || stackSummary || null;
+}
+
+function summarizeStack(chunks: KnowledgeChunk[]) {
+  const preferredOrder = [
+    "Frontend",
+    "Backend",
+    "Bases de datos",
+    "Framework",
+    "Servidores",
+    "Operacion",
+  ];
+  const stack = chunksByCategory(chunks, ["stack"]);
+  const byTitle = new Map(
+    stack.map((chunk) => [chunk.title.replace("Stack: ", ""), chunk.content]),
+  );
+
+  return preferredOrder
+    .map((category) => {
+      const content = byTitle.get(category);
+      const items = content
+        ?.replace(/^En la categoria .+ maneja:\s*/i, "")
+        .replace(/\.$/, "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .slice(0, 4);
+
+      return items?.length ? `${category}: ${items.join(", ")}` : null;
+    })
+    .filter(Boolean)
+    .join("; ");
+}
+
 function getFallbackAnswer(question: string, chunks: KnowledgeChunk[]) {
+  const normalizedQuestion = normalizeText(question);
+
+  if (asksAboutProfile(normalizedQuestion) && asksAboutStack(normalizedQuestion)) {
+    const combined = answerProfileAndStack(chunks);
+
+    if (combined) {
+      return {
+        answer: combined,
+        source: "perfil-stack",
+      };
+    }
+  }
+
   const intent = getIntent(question);
 
   if (intent) {
@@ -396,6 +456,24 @@ function findBestChunk(tokens: string[], chunks: KnowledgeChunk[]) {
 }
 
 function getRelevantChunks(question: string, chunks: KnowledgeChunk[]) {
+  const normalizedQuestion = normalizeText(question);
+  const selectedCategories = new Set<string>();
+
+  if (asksAboutProfile(normalizedQuestion)) {
+    selectedCategories.add("perfil");
+    selectedCategories.add("resumen");
+    selectedCategories.add("competencias");
+  }
+
+  if (asksAboutStack(normalizedQuestion)) {
+    selectedCategories.add("stack");
+    selectedCategories.add("proyectos");
+  }
+
+  if (selectedCategories.size > 0) {
+    return chunks.filter((chunk) => selectedCategories.has(chunk.category));
+  }
+
   const intent = getIntent(question);
 
   if (intent === "perfil" || intent === "bot" || intent === "saludo") {
