@@ -82,7 +82,11 @@ export default async function Home() {
             <div className="mt-2 flex flex-wrap gap-2 text-sm font-medium text-blue-800 sm:mt-6">
               <ContactChip icon={Mail} value={publicProfile.email} />
               {publicProfile.phone ? (
-                <ContactChip icon={Phone} value={publicProfile.phone} />
+                <ContactChip
+                  href={getWhatsAppHref(publicProfile.phone)}
+                  icon={Phone}
+                  value={publicProfile.phone}
+                />
               ) : null}
               <ContactChip icon={MapPin} value={publicProfile.location} />
             </div>
@@ -464,18 +468,48 @@ function Metric({
 }
 
 function ContactChip({
+  href,
   icon: Icon,
   value,
 }: {
+  href?: string;
   icon: ComponentType<{ className?: string }>;
   value: string;
 }) {
-  return (
-    <span className="inline-flex max-w-full min-w-0 items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 shadow-sm backdrop-blur">
+  const className =
+    "inline-flex max-w-full min-w-0 items-center gap-2 rounded-md border border-blue-100 bg-white/80 px-3 py-2 shadow-sm backdrop-blur";
+  const content = (
+    <>
       <Icon className="h-4 w-4 shrink-0 text-blue-700" />
       <span className="min-w-0 break-words">{value}</span>
-    </span>
+    </>
   );
+
+  if (href) {
+    return (
+      <a
+        aria-label={`Abrir WhatsApp para ${value}`}
+        className={`${className} transition hover:border-blue-300 hover:bg-white`}
+        href={href}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <span className={className}>{content}</span>
+  );
+}
+
+function getWhatsAppHref(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  const normalizedNumber =
+    digits.length === 10 && digits.startsWith("3") ? `57${digits}` : digits;
+
+  return normalizedNumber ? `https://wa.me/${normalizedNumber}` : undefined;
 }
 
 function ResumeBlock({
