@@ -483,6 +483,20 @@ function extractGeminiText(payload: unknown) {
   return text || null;
 }
 
+function isCompleteAnswer(answer: string) {
+  const trimmed = answer.trim();
+
+  if (trimmed.length < 40) {
+    return false;
+  }
+
+  if (/[.!?)]$/.test(trimmed)) {
+    return true;
+  }
+
+  return false;
+}
+
 async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
   const apiKey = process.env.GEMINI_API_KEY;
 
@@ -508,6 +522,7 @@ async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
               "Si el contexto no contiene la respuesta, dilo con honestidad y sugiere preguntar por perfil, proyectos, tecnologias, experiencia o contacto.",
               "No digas que eres Jorge; eres su asistente virtual.",
               "Evita respuestas demasiado largas. Normalmente responde en 2 a 5 frases.",
+              "Termina siempre con una frase completa y con puntuacion final.",
             ].join(" "),
           },
         ],
@@ -523,7 +538,7 @@ async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
         },
       ],
       generationConfig: {
-        maxOutputTokens: 450,
+        maxOutputTokens: 700,
         temperature: 0.35,
       },
     }),
@@ -533,7 +548,9 @@ async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
     return null;
   }
 
-  return extractGeminiText(await response.json());
+  const text = extractGeminiText(await response.json());
+
+  return text && isCompleteAnswer(text) ? text : null;
 }
 
 export async function POST(request: NextRequest) {
