@@ -544,6 +544,12 @@ function extractGeminiText(payload: unknown) {
   if (!payload || typeof payload !== "object") return null;
 
   const response = payload as {
+    output_text?: string;
+    steps?: Array<{
+      content?: Array<{
+        text?: string;
+      }>;
+    }>;
     candidates?: Array<{
       content?: {
         parts?: Array<{
@@ -552,6 +558,23 @@ function extractGeminiText(payload: unknown) {
       };
     }>;
   };
+  const interactionText = response.output_text?.trim();
+
+  if (interactionText) {
+    return interactionText;
+  }
+
+  const stepsText = response.steps
+    ?.flatMap((step) => step.content ?? [])
+    .map((part) => part.text)
+    .filter(Boolean)
+    .join("\n")
+    .trim();
+
+  if (stepsText) {
+    return stepsText;
+  }
+
   const text = response.candidates?.[0]?.content?.parts
     ?.map((part) => part.text)
     .filter(Boolean)
@@ -583,6 +606,16 @@ async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
   }
 
   const context = buildContext(getRelevantChunks(question, chunks));
+  const systemInstruction = [
+    "Eres el asistente virtual del portafolio profesional de Jorge Andres Morales De La Ossa.",
+    "Responde siempre en espanol, con tono profesional, claro y cercano.",
+    "Usa unicamente la informacion del contexto del portafolio.",
+    "No inventes empresas, experiencia, proyectos, tecnologias, estudios, telefonos ni enlaces.",
+    "Si el contexto no contiene la respuesta, dilo con honestidad y sugiere preguntar por perfil, proyectos, tecnologias, experiencia o contacto.",
+    "No digas que eres Jorge; eres su asistente virtual.",
+    "Evita respuestas demasiado largas. Normalmente responde en 2 a 5 frases.",
+    "Termina siempre con una frase completa y con puntuacion final.",
+  ].join(" ");
   const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
     method: "POST",
     headers: {
@@ -592,16 +625,7 @@ async function answerWithGemini(question: string, chunks: KnowledgeChunk[]) {
       systemInstruction: {
         parts: [
           {
-            text: [
-              "Eres el asistente virtual del portafolio profesional de Jorge Andres Morales De La Ossa.",
-              "Responde siempre en espanol, con tono profesional, claro y cercano.",
-              "Usa unicamente la informacion del contexto del portafolio.",
-              "No inventes empresas, experiencia, proyectos, tecnologias, estudios, telefonos ni enlaces.",
-              "Si el contexto no contiene la respuesta, dilo con honestidad y sugiere preguntar por perfil, proyectos, tecnologias, experiencia o contacto.",
-              "No digas que eres Jorge; eres su asistente virtual.",
-              "Evita respuestas demasiado largas. Normalmente responde en 2 a 5 frases.",
-              "Termina siempre con una frase completa y con puntuacion final.",
-            ].join(" "),
+            text: systemInstruction,
           },
         ],
       },

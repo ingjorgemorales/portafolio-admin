@@ -202,6 +202,20 @@ export async function getKnowledgeBase(): Promise<KnowledgeChunk[]> {
       category: "experiencia",
       content,
     });
+  } else if (projects.length > 0) {
+    const projectNames = projects
+      .slice(0, 5)
+      .map((project) => project.title)
+      .join(", ");
+
+    chunks.push({
+      title: "Experiencia practica documentada",
+      category: "experiencia",
+      content:
+        `No hay cargos laborales formales registrados en el portafolio. ` +
+        `La experiencia disponible se evidencia mediante proyectos publicados como ${projectNames}. ` +
+        `Si preguntan por el ultimo trabajo, responde que no hay un ultimo cargo laboral cargado y ofrece hablar del proyecto publicado mas reciente sin presentarlo como empleo.`,
+    });
   }
 
   const education = bySection("education");
